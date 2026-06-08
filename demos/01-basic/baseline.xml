@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<nmaprun scanner="nmap" args="nmap -sV -oX baseline.xml 10.0.0.0/29" start="1717804800" startstr="Sat Jun  7 20:00:00 2026" version="7.94">
+  <host>
+    <status state="up" reason="echo-reply"/>
+    <address addr="10.0.0.10" addrtype="ipv4"/>
+    <hostnames>
+      <hostname name="web01.lab.internal" type="PTR"/>
+    </hostnames>
+    <ports>
+      <port protocol="tcp" portid="22">
+        <state state="open" reason="syn-ack"/>
+        <service name="ssh" product="OpenSSH" version="8.9p1"/>
+      </port>
+      <port protocol="tcp" portid="80">
+        <state state="open" reason="syn-ack"/>
+        <service name="http" product="nginx" version="1.24.0"/>
+      </port>
+      <port protocol="tcp" portid="443">
+        <state state="closed" reason="reset"/>
+      </port>
+    </ports>
+  </host>
+  <host>
+    <status state="up" reason="echo-reply"/>
+    <address addr="10.0.0.11" addrtype="ipv4"/>
+    <hostnames>
+      <hostname name="db01.lab.internal" type="PTR"/>
+    </hostnames>
+    <ports>
+      <port protocol="tcp" portid="5432">
+        <state state="open" reason="syn-ack"/>
+        <service name="postgresql" product="PostgreSQL DB" version="15.3"/>
+      </port>
+    </ports>
+  </host>
+</nmaprun>
