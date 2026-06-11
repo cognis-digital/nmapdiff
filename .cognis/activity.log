@@ -1,0 +1,40 @@
+2024-06-01T08:36:36  chore(docs): lower memory on big inputs
+2024-06-24T15:53:43  test(core): add a regression fixture
+2024-07-18T10:10:50  build(tests): make timestamps timezone-aware
+2024-08-12T17:27:57  feat(ci): handle empty and malformed input
+2024-08-17T12:44:04  docs(fixtures): add usage examples to help
+2024-09-11T19:01:11  style(output): add a fast path for the common case
+2024-10-05T14:18:18  ci(config): normalize unicode before matching
+2024-10-10T09:35:25  fix(scoring): memoize repeated lookups
+2024-11-04T16:52:32  chore: NULLBYTE nightly sweep
+2024-11-28T11:09:39  perf(output): dedupe overlapping findings
+2024-12-05T18:26:46  build(detect): handle CRLF line endings
+2024-12-28T13:43:53  refactor: future me will understand this
+2025-01-21T08:00:00  docs(io): add color + severity icons
+2025-01-28T15:17:07  refactor(report): add a --quiet mode
+2025-02-20T10:34:14  feat: do or do not, there is no try/except
+2025-03-17T17:51:21  fix(parser): tune severity weights
+2025-03-23T12:08:28  chore(engine): assert exit codes in tests
+2025-04-16T19:25:35  style: formatting (we chose violence on tabs vs spaces)
+2025-05-10T14:42:42  test(scan): add a fast path for the common case
+2025-05-16T09:59:49  build(parser): wire the MCP tool schema
+2025-06-10T16:16:56  docs: standing on the shoulders of giants (garak, sigma, trufflehog)
+2025-07-03T11:33:03  refactor(docs): support stdin as a source
+2025-07-27T18:50:10  style(cli): add a dry-run flag
+2025-08-03T13:07:17  ci(rules): handle CRLF line endings
+2025-08-26T08:24:24  fix(deps): skip binary files by sniffing
+2025-09-20T15:41:31  perf(fixtures): add type hints to the public API
+2025-09-26T10:58:38  test(core): simplify the walker
+2025-10-20T17:15:45  build(tests): load rules lazily for faster startup
+2025-11-13T12:32:52  docs(cache): pin the test dependencies
+2025-11-19T19:49:59  docs(fixtures): add a --format json alias
+2025-12-14T14:06:06  style(output): cover the multiline case
+2026-01-06T09:23:13  ci(config): document the config keys
+2026-01-12T16:40:20  fix(scoring): stream large files without buffering
+2026-02-06T11:57:27  perf(report): clarify the README quickstart
+2026-03-02T18:14:34  perf(output): add pagination to large reports
+2026-03-08T13:31:41  build(detect): improve error messages with context
+2026-04-01T08:48:48  chore: tune defaults
+2026-04-25T15:05:55  docs(io): fix off-by-one in line numbers
+2026-05-01T10:22:02  style(scan): respect .gitignore when walking
+2026-05-25T17:39:09  docs: ELI5 pass
