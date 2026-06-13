@@ -20,6 +20,33 @@ pip install cognis-nmapdiff
 nmapdiff scan .            # → prioritized findings in seconds
 ```
 
+## Usage — step by step
+
+`nmapdiff` diffs two nmap XML scans to surface new hosts/ports/services for defensive change-detection. Console script: `nmapdiff`.
+
+1. **Install**:
+   ```bash
+   pipx install nmapdiff     # or: pip install nmapdiff
+   ```
+2. **Produce the scans** with nmap's XML output (`-oX`), e.g. a stored baseline and a fresh scan:
+   ```bash
+   nmap -oX baseline.xml -sV 10.0.0.0/24      # captured previously
+   nmap -oX current.xml  -sV 10.0.0.0/24      # today's scan
+   ```
+3. **Diff the baseline against the current scan**:
+   ```bash
+   nmapdiff diff baseline.xml current.xml
+   ```
+   Exit `0` = no changes, `1` = changes detected, `2` = parse/IO error.
+4. **Read the diff as JSON** for alerting / ticketing:
+   ```bash
+   nmapdiff diff baseline.xml current.xml --format json | jq '.diff'
+   ```
+5. **Run it on a schedule / in CI** to alert on new attack surface:
+   ```bash
+   nmapdiff diff baseline.xml current.xml || echo "new hosts/ports/services since baseline — investigate"
+   ```
+
 ## Contents
 
 - [Why nmapdiff?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
