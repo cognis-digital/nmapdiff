@@ -103,7 +103,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     try:
         baseline = parse_scan_file(args.baseline)
         current = parse_scan_file(args.current)
-    except (OSError, ValueError) as exc:
+    except (OSError, ValueError, UnicodeDecodeError) as exc:
         print(f"{TOOL_NAME}: error: {exc}", file=sys.stderr)
         return 2
 

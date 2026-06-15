@@ -188,8 +188,16 @@ def _host_name(host_el: ET.Element) -> str:
 def parse_scan(xml_text: str) -> ScanReport:
     """Parse nmap XML text into a :class:`ScanReport`.
 
-    Raises ``ValueError`` if the document is not recognizable nmap XML.
+    Raises ``ValueError`` if the document is not recognizable nmap XML or
+    if ``xml_text`` is not a string.
     """
+
+    if not isinstance(xml_text, str):
+        raise ValueError(
+            f"xml_text must be a str, got {type(xml_text).__name__}"
+        )
+    if not xml_text.strip():
+        raise ValueError("xml_text is empty")
 
     try:
         root = ET.fromstring(xml_text)
@@ -241,8 +249,19 @@ def parse_scan(xml_text: str) -> ScanReport:
 
 
 def parse_scan_file(path: str) -> ScanReport:
-    with open(path, "r", encoding="utf-8") as fh:
-        return parse_scan(fh.read())
+    """Read *path* and parse as nmap XML.
+
+    Raises:
+        OSError: file cannot be opened or read.
+        ValueError: content is not valid nmap XML, or the file is not UTF-8.
+    """
+    try:
+        with open(path, "r", encoding="utf-8") as fh:
+            return parse_scan(fh.read())
+    except UnicodeDecodeError as exc:
+        raise ValueError(
+            f"file is not valid UTF-8 and cannot be parsed as nmap XML: {exc}"
+        ) from exc
 
 
 # --------------------------------------------------------------------------- #
