@@ -1,0 +1,3 @@
+$ nmapdiff-emit --version
+
+nmapdiff 1.0.0

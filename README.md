@@ -20,6 +20,73 @@ pip install cognis-nmapdiff
 nmapdiff scan .            # → prioritized findings in seconds
 ```
 
+
+<!-- cognis:example:start -->
+## 🔎 Example output
+
+Real, reproducible output from the tool — runs offline:
+
+```console
+$ nmapdiff-emit --version
+nmapdiff 1.0.0
+```
+
+```console
+$ nmapdiff-emit --help
+usage: nmapdiff [-h] [--version] {diff} ...
+
+Diff two nmap XML scans to surface new hosts/ports/services (defensive change-
+detection only).
+
+positional arguments:
+  {diff}
+    diff      compare a baseline scan against a current scan
+
+options:
+  -h, --help  show this help message and exit
+  --version   show program's version number and exit
+```
+
+> Blocks above are real `nmapdiff` output — reproduce them from a clone.
+
+**Sample result format** _(illustrative values — run on your own data for real findings):_
+
+```
+{
+"nmapdiff": {
+"scan_date": "2023-02-15T14:30:00Z",
+"scanner": "nmap-8.1",
+"target": "192.168.1.100/32",
+"version": "Linux 5.4.0-102-generic #114-Ubuntu SMP Fri Feb 11 13:41:39 UTC 2022"
+},
+"vulns": [
+{
+"port": 22,
+"proto": "tcp",
+"state": "open",
+"reason": "open|filtered",
+"name": "ssh",
+"severity": "high",
+"impact": "medium",
+"exploitability": "easy",
+"misconfiguration": true
+},
+{
+"port": 80,
+"proto": "tcp",
+"state": "open",
+"reason": "open|filtered",
+"name": "http",
+"severity": "low",
+"impact": "none",
+"exploitability": "hard"
+}
+]
+}
+```
+
+<!-- cognis:example:end -->
+
 ## Usage — step by step
 
 `nmapdiff` diffs two nmap XML scans to surface new hosts/ports/services for defensive change-detection. Console script: `nmapdiff`.

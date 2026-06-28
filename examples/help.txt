@@ -1,0 +1,14 @@
+$ nmapdiff-emit --help
+
+usage: nmapdiff [-h] [--version] {diff} ...
+
+Diff two nmap XML scans to surface new hosts/ports/services (defensive change-
+detection only).
+
+positional arguments:
+  {diff}
+    diff      compare a baseline scan against a current scan
+
+options:
+  -h, --help  show this help message and exit
+  --version   show program's version number and exit
